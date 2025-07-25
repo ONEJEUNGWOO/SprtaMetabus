@@ -54,7 +54,7 @@ public class BaseController : MonoBehaviour     //¹æ Çâº¯°æ ÀÌµ¿ µî µ¿ÀÛÀ» Ã³¸®Ç
     private void Rotate(Vector2 direction)
     {
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //¼ö½ÄÀº Àß ¸ð¸£°ÚÁö¸¸ º¸°í ÀÖ´Â °ªÀ» ±¸ÇØ´Â °Í °°À½
-        Debug.Log($"rotz°ª {rotZ}");
+
         bool isLeft = rotZ > 135f || rotZ <= -135f;     //ÇöÀç º¸´Â ¹æÇâÀ» bool°ªÀ¸·Î ¹ÝÈ¯ÇÏ´Â º¯¼ö
         bool isRight = rotZ > -45f && rotZ <= 45f;      
         bool isTop = rotZ > 45f && rotZ <= 135f;
