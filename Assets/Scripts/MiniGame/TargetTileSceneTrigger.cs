@@ -6,12 +6,6 @@ public class TargetTileSceneTrigger : MonoBehaviour             //어떤 씬으로 전
 {
     public string SceneName { get; set; }       //씬이름 정할 것
 
-
-    private void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
         SceneChanger.Instance.SceneChange(tag);

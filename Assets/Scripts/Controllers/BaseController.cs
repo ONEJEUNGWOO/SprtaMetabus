@@ -32,6 +32,8 @@ public class BaseController : MonoBehaviour     //¹æ Çâº¯°æ ÀÌµ¿ µî µ¿ÀÛÀ» Ã³¸®Ç
     {
         HandleAction();
         Rotate(lookDirection);
+        Debug.Log($"¼Óµµ °è¼Ó ³ª¿À³ª? {lookDirection}");
+
     }
 
     protected virtual void FixedUpdate()

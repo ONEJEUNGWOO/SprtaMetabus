@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour       //메인카메라가 타겟 따라가는 클래스
 {
-    [SerializeField] private Transform target;      //따라갈 오브젝트? 객체 찾기
-    private Vector3 position;                       //따라갈 위치 담을 함수
+    [SerializeField] private Transform target;      // 따라갈 대상
+    [SerializeField] private float minX, maxX, minY, maxY;  // 카메라 이동 제한 범위
+
+    private Vector3 position;       // 따라갈 위치 담을 변수
 
     void LateUpdate()
     {
         if (target == null)
             return;
 
-        position = new Vector3(target.position.x,target.position.y,transform.localPosition.z);      //따라갈 타겟 위치 넣어주기
-        transform.position = position;      // z가 플레이어랑 같으면 안보여서 원래 카메라 z값을 넣어줌
+        // 타겟 위치를 기준으로, X, Y는 따라가고 Z는 카메라 자신의 z 유지
+        float targetX = Mathf.Clamp(target.position.x, minX, maxX);
+        float targetY = Mathf.Clamp(target.position.y, minY, maxY);
+
+        position = new Vector3(targetX, targetY, transform.position.z);
+        transform.position = position;
     }
 }
