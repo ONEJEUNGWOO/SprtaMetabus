@@ -10,8 +10,14 @@ public class Player : MonoBehaviour
 {
     Animator animator;
     Rigidbody2D _rigidbody;
+    
     public UnityEngine.UI.Button restartButton;
     public UnityEngine.UI.Button returnButton;
+
+    public UIManagerBird uiManagerBird;
+    public Canvas gameOverCanvas;
+    public Canvas gameWinCanvas;
+    public Canvas scoreCanvas;
 
     public float flapForce = 6f;
     public float forwardSpeed = 3f;
@@ -49,7 +55,23 @@ public class Player : MonoBehaviour
     }
     void OnButtonReturn()
     {
+
+        StartCoroutine(ShowCanvasAndReturn());
+
+    }
+
+    private IEnumerator ShowCanvasAndReturn()
+    {
+        if (uiManagerBird.BestScore >= 30)
+            gameWinCanvas.gameObject.SetActive(true);
+        else
+            gameOverCanvas.gameObject.SetActive(true);         
+        
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("MainScene");
+        yield return new WaitForSeconds(2f);
+        gameOverCanvas.gameObject.SetActive(false);
+        gameWinCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
