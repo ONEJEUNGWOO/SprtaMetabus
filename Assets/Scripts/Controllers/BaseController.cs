@@ -9,6 +9,7 @@ public class BaseController : MonoBehaviour     //¹æ Çâº¯°æ ÀÌµ¿ µî µ¿ÀÛÀ» Ã³¸®Ç
     protected Rigidbody2D _rigid;  //ºÎ¸ğ¸¦ ÀÌµ¿ÇÏ´Â ¹æ½ÄÀÌ±â ¶§¹®¿¡ ºÎ¸ğ¿¡ ¸®Áöµå ¹Ùµğ¸¦ ´ãÀ» º¯¼ö »ı¼º
     [SerializeField] private SpriteRenderer characterRenderer;  //ºÎ¸ğ¿¡ ÀÎ½ºÆåÅÍ¿¡¼­ ¹Ì¸® ÀÚ½Äµé ¿øÇÏ´Â°Å ¹Ş¾ÆµÎ±â ³ª´Â ¾Ö´Ï¸ŞÀÌÅÍ¸¦ ¹Ş¾Æ ¿Í¾ß ÇÒ ¼öµµÀÖ¾îº¸ÀÓ
     [SerializeField] private Transform weaponPivot;             //GetComponent ¾ÈÇÏ±â À§ÇØ ¾²´Â °Ç°¡?
+    [SerializeField] private Transform playerTrans;             //Ä³¸¯ÅÍ À§Ä¡ ¹Ş¾Æ¼­ ´Ù¸¥ º¯¼ö¿¡ ³Ö°í ¿òÁ÷ÀÌ´ÂÁö È®ÀÎ ÇÒ º¯¼ö
     [SerializeField] private Animator characterAnimator;         //¾Ö´Ï¸ŞÀÌÅÍ º¯È¯ÇÏ±â À§ÇØ
 
     protected Vector2 movementDirection = Vector2.zero;         //ÀÚ½Ä Å¬·¡½º¿¡¼­ ÀÌµ¿ °ªÀ» ¹Ş¾Æ¿À±â À§ÇØ ¸¸µç º¯¼ö
@@ -32,8 +33,13 @@ public class BaseController : MonoBehaviour     //¹æ Çâº¯°æ ÀÌµ¿ µî µ¿ÀÛÀ» Ã³¸®Ç
     {
         HandleAction();
         Rotate(lookDirection);
-        Debug.Log($"¼Óµµ °è¼Ó ³ª¿À³ª? {lookDirection}");
 
+        float h = Input.GetAxisRaw("Horizontal");  // ¿©±â¼­µµ ÀÔ·Â µû·Î È®ÀÎÇÏ±â
+        float v = Input.GetAxisRaw("Vertical");    
+
+        bool isRun = h != 0 || v != 0;          // ÇÏ³ª¶óµµ ÀÔ·ÂµÇ¸é true ¾Æ´Ï¸é false
+
+        characterAnimator.SetBool("IsRun", isRun);    // ÆÄ¶ó¹ÌÅÍ ¿¬°áÇØÁÖ±â
     }
 
     protected virtual void FixedUpdate()

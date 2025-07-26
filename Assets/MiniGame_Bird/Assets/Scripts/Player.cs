@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
     Animator animator;
     Rigidbody2D _rigidbody;
+    public UnityEngine.UI.Button restartButton;
+    public UnityEngine.UI.Button returnButton;
 
     public float flapForce = 6f;
     public float forwardSpeed = 3f;
@@ -32,6 +38,18 @@ public class Player : MonoBehaviour
         if (_rigidbody == null)
             Debug.Log("리지드바디없음");
 
+        restartButton.onClick.AddListener(OnButtonRestart);     //UI버튼 누르면 실행할 함수
+        returnButton.onClick.AddListener(OnButtonReturn);
+
+    }
+
+    void OnButtonRestart()      //급하게 제작한거 UI누르면 실행할 함수
+    {
+        gameManager.RestartGame();
+    }
+    void OnButtonReturn()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
     // Update is called once per frame
@@ -41,10 +59,10 @@ public class Player : MonoBehaviour
         {
             if (deathCooldown <= 0)
             {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                {
-                    gameManager.RestartGame();
-                }
+                //if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                //{
+                //    gameManager.RestartGame();
+                //}
             }
             else
             {

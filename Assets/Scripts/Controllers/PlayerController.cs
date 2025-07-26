@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : BaseController      //플레이어가 움직일 값들을 받아오는 클래스
 {
     private Camera camera;  //카메라 가져오기 위해 만들어 두는 변수
+    public bool isMoving;  //IsRun파리미터를 키고 끄기위한 변수
 
     protected override void Start()
     {
