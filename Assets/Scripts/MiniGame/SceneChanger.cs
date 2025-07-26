@@ -7,6 +7,8 @@ public class SceneChanger : MonoBehaviour           // 씬 전환용 클래스
 {
     public static SceneChanger Instance { get; private set; }
 
+    public int hasVisitet = 0;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,6 +24,7 @@ public class SceneChanger : MonoBehaviour           // 씬 전환용 클래스
     /**씬 이름 스트링값으로 받아서 넣어주면 그 씬으로 바꿔주는 함수**/
     public void SceneChange(string sceneName)
     {
+        hasVisitet++;
         SceneManager.LoadScene(sceneName);
     }
 
