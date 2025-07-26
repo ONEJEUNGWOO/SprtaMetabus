@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MiniGame_Bird/Assets/Scenes/MiniGame_Bird.unity
+    path: Assets/MiniGame_TopDown/Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/MiniGame_Stack/Assets/Scenes/MiniGame_Stack.unity
@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: c7781fba45562ac488563a10283fb8cc
+  - enabled: 1
+    path: Assets/MiniGame_Bird/Assets/Scenes/MiniGame_Bird.unity
+    guid: bc54ea1fa54243d4e9dc58ba84dd2d7a
   m_configObjects: {}
